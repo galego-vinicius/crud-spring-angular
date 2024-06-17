@@ -1,3 +1,4 @@
+import { CourseService } from './../services/course.service';
 import { Component } from '@angular/core';
 import { Course } from '../models/course';
 import {MatTableModule} from '@angular/material/table';
@@ -12,8 +13,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   styleUrl: './courses.component.scss'
 })
 export class CoursesComponent {
-  courses: Course[] = [
-    { _id: '1', name: 'Angular', category: 'Front-end'}
-  ] //Criando construtor;
+  courses: Course[] = [];
   displayedColumns = ['name', 'category'];
+  // coursesService: CourseService;
+
+  constructor(private coursesService: CourseService){
+    // this.coursesService = new CourseService();
+    this.courses = this.coursesService.list();
+  }
+
 }
