@@ -2,10 +2,11 @@ import { mergeApplicationConfig, ApplicationConfig, importProvidersFrom } from '
 import { provideServerRendering } from '@angular/platform-server';
 import { appConfig } from './app.config';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
 const serverConfig: ApplicationConfig = {
   providers: [
-    provideServerRendering(), importProvidersFrom(MatToolbarModule)
+    provideServerRendering(), importProvidersFrom(MatToolbarModule, HttpClientModule)
   ]
 };
 
