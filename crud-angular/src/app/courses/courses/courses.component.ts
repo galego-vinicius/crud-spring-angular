@@ -22,7 +22,7 @@ import { CategoryPipe } from '../../shared/pipes/category.pipe';
 })
 export class CoursesComponent {
   courses$: Observable <Course[]>;
-  displayedColumns = ['name', 'category'];
+  displayedColumns = ['_id', 'name', 'category'];
 
   constructor(private coursesService: CourseService, public dialog: MatDialog){
     this.courses$ = this.coursesService.list()
