@@ -22,4 +22,8 @@ export class CourseService {
       tap(courses => console.log(courses))
     ); // Pipe e tap -> Parecido com Log lá no Java, para debugar.
   }
+
+  save(course: Course){
+    return this.httpClient.post<Course>(this.API, course)//.pipe(first())
+  }
 }
