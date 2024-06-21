@@ -1,3 +1,4 @@
+import { routes } from './../../app.routes';
 import { CourseService } from './../services/course.service';
 import { Component } from '@angular/core';
 import { Course } from '../models/course';
@@ -11,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 import {MatIconModule} from '@angular/material/icon';
 import { CategoryPipe } from '../../shared/pipes/category.pipe';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -22,9 +24,10 @@ import { CategoryPipe } from '../../shared/pipes/category.pipe';
 })
 export class CoursesComponent {
   courses$: Observable <Course[]>;
-  displayedColumns = ['_id', 'name', 'category'];
+  displayedColumns = ['_id', 'name', 'category', 'actions'];
 
-  constructor(private coursesService: CourseService, public dialog: MatDialog){
+  constructor(private coursesService: CourseService, public dialog: MatDialog,
+    private router: Router, private route: ActivatedRoute){
     this.courses$ = this.coursesService.list()
     .pipe(
       catchError(error => {
@@ -38,5 +41,9 @@ export class CoursesComponent {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
+  }
+
+  onAdd(){
+    this.router.navigate(['new'], {relativeTo: this.route})
   }
 }
