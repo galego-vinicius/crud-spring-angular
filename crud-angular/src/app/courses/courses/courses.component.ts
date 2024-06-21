@@ -13,6 +13,7 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 import {MatIconModule} from '@angular/material/icon';
 import { CategoryPipe } from '../../shared/pipes/category.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-courses',
