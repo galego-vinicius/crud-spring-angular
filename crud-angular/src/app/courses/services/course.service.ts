@@ -18,7 +18,7 @@ export class CourseService {
     .pipe(
       first(), //Como não é uma stream, ele só pega a primeira resposta do servidor
       // e depois fecha a conexao.
-      delay(3000),
+      //delay(3000),
       tap(courses => console.log(courses))
     ); // Pipe e tap -> Parecido com Log lá no Java, para debugar.
   }

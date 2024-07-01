@@ -13,19 +13,18 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 import {MatIconModule} from '@angular/material/icon';
 import { CategoryPipe } from '../../shared/pipes/category.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatButtonModule} from '@angular/material/button';
+import { CoursesListComponent } from '../courses-list/courses-list.component';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
   imports: [MatTableModule, MatCardModule, MatToolbarModule, MatProgressSpinnerModule,
-     CommonModule, MatIconModule, CategoryPipe],
+     CommonModule, MatIconModule, CategoryPipe, CoursesListComponent],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
 export class CoursesComponent {
   courses$: Observable <Course[]>;
-  displayedColumns = ['_id', 'name', 'category', 'actions'];
 
   constructor(private coursesService: CourseService, public dialog: MatDialog,
     private router: Router, private route: ActivatedRoute){
