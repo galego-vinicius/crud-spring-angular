@@ -23,7 +23,7 @@ export class CourseService {
     ); // Pipe e tap -> Parecido com Log lá no Java, para debugar.
   }
 
-  save(course: Course){
+  save(course: Partial<Course>){
     return this.httpClient.post<Course>(this.API, course)//.pipe(first())
   }
 }

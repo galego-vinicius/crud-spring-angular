@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input';
@@ -22,14 +22,13 @@ import { Location } from '@angular/common'
 })
 export class CourseFormComponent {
 
-  form: FormGroup;
+  form = this.formBuilder.group({
+    name: [''],
+    category: ['']
+  })
 
-  constructor(private formBuilder: FormBuilder, private service: CourseService,
+  constructor(private formBuilder: NonNullableFormBuilder, private service: CourseService,
     private _snackBar: MatSnackBar, private location: Location){
-    this.form = this.formBuilder.group({
-      name: [null],
-      category: [null]
-    })
   }
 
   onSubmit(){
