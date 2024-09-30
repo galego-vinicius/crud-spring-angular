@@ -1,4 +1,4 @@
-package com.vinicius.repository;
+package com.vinicius.repositories;
 
 import com.vinicius.entities.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
