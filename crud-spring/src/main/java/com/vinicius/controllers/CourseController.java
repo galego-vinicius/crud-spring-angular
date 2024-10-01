@@ -2,8 +2,6 @@ package com.vinicius.controllers;
 
 import com.vinicius.dto.request.CreateCourseDTO;
 import com.vinicius.dto.response.CourseDTO;
-import com.vinicius.entities.Course;
-import com.vinicius.repositories.CourseRepository;
 import com.vinicius.services.CourseService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
