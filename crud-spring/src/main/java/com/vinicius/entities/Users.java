@@ -32,6 +32,12 @@ public class Users implements UserDetails {
 
     private UsersRole role;
 
+    public Users (String email, String password, UsersRole role){
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(this.role == UsersRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),
