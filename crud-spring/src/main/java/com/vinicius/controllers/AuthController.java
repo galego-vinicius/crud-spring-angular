@@ -2,8 +2,10 @@ package com.vinicius.controllers;
 
 import com.vinicius.dto.request.CreateAuthDTO;
 import com.vinicius.dto.request.CreateRegisterDTO;
+import com.vinicius.dto.response.AuthDTO;
 import com.vinicius.entities.Users;
 import com.vinicius.repositories.UsersRepository;
+import com.vinicius.security.TokenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthController {
 
+    private final TokenService tokenService;
     private AuthenticationManager authenticationManager;
 
     private final UsersRepository usersRepository;
@@ -29,7 +32,9 @@ public class AuthController {
         UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(createAuthDTO.email(), createAuthDTO.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((Users) auth.getPrincipal());
+
+        return ResponseEntity.ok(new AuthDTO(token));
     }
 
     @PostMapping("/register")
